@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1034999334979",
+    "firebase_url": "https://act3-2024-default-rtdb.firebaseio.com",
+    "project_id": "act3-2024",
+    "storage_bucket": "act3-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034999334979:android:2673c743cecea235d56cf6",
+        "android_client_info": {
+          "package_name": "com.upb.act3aap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-0RIkxKTAEzaifXC6ieTZm6daLY9QgaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
