@@ -17,7 +17,7 @@ public class ButtonLogin : MonoBehaviour
     [SerializeField]
     private TMP_InputField _passwordInputField;
     [SerializeField]
-    private string _sceneToLoad = "yogo";
+    private string _sceneToLoad = "Yogo";
 
     private Coroutine _signupCoroutine;
     void Reset()
@@ -29,6 +29,7 @@ public class ButtonLogin : MonoBehaviour
     void Start()
     {
         _loginButton.onClick.AddListener(HandleLoginButtonClicked);
+        FirebaseAuth.DefaultInstance.StateChanged += HandleAuthStateChange;
     }
 
     private void HandleLoginButtonClicked()
@@ -46,19 +47,19 @@ public class ButtonLogin : MonoBehaviour
                 return;
             }
             
-                Firebase.Auth.AuthResult result = task.Result;
-                Debug.LogFormat("User signed in successfully: {0} ({1})", result.User.DisplayName, result.User.UserId);
-
-                SceneManager.LoadScene(_sceneToLoad);
-            
-
-
+            Firebase.Auth.AuthResult result = task.Result;
+            Debug.LogFormat("User signed in successfully: {0} ({1})", result.User.DisplayName, result.User.UserId);
         });
     }
-
-    // Update is called once per frame
-    void Update()
+    private void HandleAuthStateChange(object sender, EventArgs e)
     {
-
+        if (FirebaseAuth.DefaultInstance.CurrentUser != null)
+        {
+            SceneManager.LoadScene(_sceneToLoad);
+        }
+    }
+    void OnDestroy()
+    {
+        FirebaseAuth.DefaultInstance.StateChanged -= HandleAuthStateChange;
     }
 }
